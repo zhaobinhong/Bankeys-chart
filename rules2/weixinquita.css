@@ -1,0 +1,40 @@
+#res {
+    margin-bottom: -15px;
+}
+
+table {
+    text-align: justify;
+}
+
+.thad {
+    background-image:url("aa.jpg") ;
+    color: #fff;
+}
+
+#thad tr td, tr th {
+    text-align: center;
+}
+
+tr td:nth-child(1), tr td:nth-child(2), tr td:nth-child(3), tr th:nth-child(1), tr th:nth-child(2), tr th:nth-child(3) {
+    border-right: 1px solid #fff;
+}
+
+.f2 {
+    background: #f2f2da;
+}
+
+.e3 {
+    background: #e3dfaf;
+}
+
+.hint{
+    color: #525252;
+    height: 30px;
+    line-height: 30px;
+    text-indent: 1em;
+}
+.hint span{
+    color: #d04e50;
+}
+
+

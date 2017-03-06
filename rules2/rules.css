@@ -1,0 +1,89 @@
+/*样式初始化*/
+body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select, hr {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    /* font: 12px "宋体", "Arial Narrow", HELVETICA; */
+    font-size: 14px;
+    background: #fff;
+    -webkit-text-size-adjust: 100%;
+}
+
+a {
+    color: #2d374b;
+    text-decoration: none
+}
+
+.link a:link {
+    text-decoration: none; /* 指正常的未被访问过的链接*/
+}
+
+.link a:visited {
+    text-decoration: none; /*指已经访问过的链接*/
+}
+
+.link a:hover {
+    text-decoration: none; /*指鼠标在链接*/
+}
+
+.link a:active {
+    text-decoration: none; /* 指正在点的链接*/
+}
+
+em {
+    font-style: normal
+}
+
+li {
+    list-style: none
+}
+
+img {
+    border: 0;
+    vertical-align: middle
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+p {
+    word-wrap: break-word
+}
+
+/*基本样式*/
+.container h5 {
+    color: #2a9cd5;
+    margin-bottom: 4px;
+}
+
+.container hr {
+    margin: 0;
+    padding: 0;
+}
+
+.top {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    padding-left: 1em;
+    color: #5e5e5e;
+}
+.link{
+    margin-top: 1em;
+
+}
+.link,.link i{
+    font-size: 1.6rem;
+}
+.gren,.gren a{
+    color: #6ac129;
+}
+.bul, .bul a{
+    color: #2f90d8;
+}
+.textColor{
+    color: #525252;
+}

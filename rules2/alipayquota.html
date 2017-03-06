@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="Author" content="Bankeys-Hovace"/>
+    <meta name="Copyright" content="keyPos "/>
+    <meta name="description" content="限额"/>
+    <title>支付宝限额</title>
+    <link rel="stylesheet" href="rules.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <link rel="stylesheet" href="weixinquita.css">
+</head>
+<body>
+<div class="table-responsive" id="res">
+    <table class="table">
+        <thead>
+        <tr class="thad">
+            <th>银行类型</th>
+            <th>储蓄卡限额</th>
+            <th>银行类型</th>
+            <th>信用卡限额</th>
+        </tr>
+        </thead>
+        <tbody id="thad">
+        <tr>
+            <td>中国银行</td>
+            <td>
+                1W元/笔<br>
+                1W元/日
+            </td>
+            <td>工商银行</td>
+            <td>1W元/笔 <br>
+                10W元/日
+            </td>
+        </tr>
+        <tr>
+            <td>农业银行
+            </td>
+            <td>1W元/笔 <br>
+                1W元/日
+            </td>
+            <td>农业银行
+            </td>
+            <td>2W元/笔 <br>
+                2W元/日
+            </td>
+        </tr>
+        <tr>
+            <td>工商银行
+            </td>
+            <td>1W元/笔 <br>
+                10W元/日
+            </td>
+            <td>建设银行
+
+            </td>
+            <td>5W元/笔 <br>
+                5W元/日
+            </td>
+        </tr>
+        <tr>
+            <td>交通银行
+            </td>
+            <td>1W元/笔 <br>
+                1W元/日
+            </td>
+            <td>中国银行
+            </td>
+            <td>卡额度
+            </td>
+        </tr>
+
+        <tr>
+            <td>建设银行
+            </td>
+            <td>1W元/笔 <br>
+                5W元/日
+            </td>
+            <td>平安银行
+            </td>
+            <td>5W元/笔 <br>
+                5W元/日
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>平安银行
+            </td>
+            <td>5W元/笔 <br>
+                无限额/日
+            </td>
+            <td>交通银行
+            </td>
+            <td>2W元/笔 <br>
+                2W元/日
+            </td>
+        </tr>
+
+        <tr>
+            <td>中信银行
+            </td>
+            <td>5W元/笔 <br>
+                5W元/日
+            </td>
+            <td>招商银行
+            </td>
+            <td>3W元/笔 <br>
+                3W元/日
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>光大银行
+            </td>
+            <td>5W元/笔 <br>
+                5W元/日
+            </td>
+            <td>浦发银行
+            </td>
+            <td>10W元/笔 <br>
+                10W元/日
+            </td>
+        </tr>
+
+        <tr>
+            <td>浦发银行
+            </td>
+            <td>30W元/笔 <br>
+                30W元/日
+            </td>
+            <td>邮储银行
+            </td>
+            <td>2W元/笔 <br>
+                2W元/日
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>招商银行
+            </td>
+            <td>5W元/笔 <br>
+                5W元/日
+            </td>
+            <td>兴业银行
+            </td>
+            <td>5W元/笔 <br>
+                10W元/日
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>广发银行
+            </td>
+            <td>3W元/笔 <br>
+                3W元/日
+            </td>
+            <td>广发银行
+            </td>
+            <td>3W元/笔 <br>
+                3W元/日
+            </td>
+        </tr>
+
+        <tr>
+            <td>邮储银行
+            </td>
+            <td>5000元/笔 <br>
+                5000元/日
+            </td>
+            <td>华夏银行
+            </td>
+            <td>2W元/笔 <br>
+                无限额/日
+            </td>
+        </tr>
+        <tr>
+            <td>民生银行
+            </td>
+            <td>5W元/笔 <br>
+                5W元/日
+            </td>
+            <td>民生银行
+            </td>
+            <td>卡额度
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>兴业银行
+            </td>
+            <td>1W元/笔 <br>
+                1W元/日
+            </td>
+            <td>光大银行
+            </td>
+            <td>5W元/笔 <br>
+                5W元/日
+            </td>
+        </tr>
+        <tr>
+            <td>华夏银行
+            </td>
+            <td>50W元/笔 <br>
+                50W元/日
+            </td>
+            <td>中信银行
+            </td>
+            <td>卡额度
+            </td>
+        </tr>
+
+        <tr>
+            <td>上海银行
+            </td>
+            <td>5W元/笔 <br>
+                5W元/日
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div id="hint" class="hint">
+        <span>提示：</span>仅作参考以支付宝提示为准
+    </div>
+</div>
+<script type="text/javascript">
+    var thad=document.getElementById("thad"),trs=thad.getElementsByTagName("tr");
+    for(var i=0;i<trs.length;i++){
+        (i%2) ? trs[i].className="f2" : trs[i].className="e3";
+    }
+</script>
+</body>
+</html>

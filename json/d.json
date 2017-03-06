@@ -1,0 +1,12 @@
+[
+  {
+    "name": "我的",
+    "amount ": 5355,
+    "color":"#ccc"
+  },
+  {
+    "name": "你的",
+    "amount ": 6633,
+    "color":"#00ff00"
+  }
+]

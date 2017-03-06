@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="Author" content="bankeys-ZBH"/>
+    <meta name="Copyright" content="bankeys "/>
+    <meta name="description" content="记账"/>
+    <title></title>
+    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
+    <script type="text/javascript" src="js/exporting.js"></script>
+    <link rel="stylesheet" href="css/index1.css">
+
+</head>
+<body>
+
+<div class="contentText">
+    <h4 class="title" style="margin-bottom: 0;">账单列表</h4>
+
+</div>
+<div id="main" style="width: 100%;"></div>
+
+<!--<table class="statement" width="100%" border="0">
+
+    <tr class="barBorder">
+        <td class="td_lineHeight">收入（元）</td>
+    </tr>
+    <tr>
+        <td id="totalMoney" class="totalMoney">0.0</td>
+    </tr>
+
+</table>
+<button id="totalButton" class="center buttonRestore totalButtonType">详细信息〉</button>-->
+<script type="text/javascript">
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+
+
+    $(function () {
+
+        function get_data() {
+            var data;
+            //通过Ajax获取数据
+            $.ajax({
+                type: "post",
+                async: false, //同步执行
+                url: "http://60.221.214.6:80/merfront/keypos/queryStati",
+                contentType: "application/json",
+                dataType: "jsonp", //返回数据形式为json
+                data: {
+                    "mobileNo": "13008020978",
+                    "monthNbr": "201703"
+                },
+                success: function (result) {
+                    console.log(result);
+                    if (result) {
+                        data = result;
+                    }
+                },
+                error: function (errorMsg) {
+                    alert('数据加载失败！');
+                    console.log("数据加载失败！");
+                    return false;
+                }
+            });
+            return data;
+        }
+
+        var a = {
+            "success": true,
+            "success": "操作成功",
+            "sign": "014188CB7F4F13320F6E3C00F2CD53B2",
+            "mercInComes": [{"merchantName": "旋转火锅", "merPayAmt": "219359258"}, {
+                "merchantName": "宾馆宾馆宾馆宾馆宾馆宾馆宾馆宾馆宾馆",
+                "merPayAmt": "2"
+            }]
+        }
+//        function get_data() {
+//            var newdata;
+//            $.getJSON("http://60.221.214.6:80/merfront/keypos/queryStati", data = {
+//                "mobileNo": "13008020978",
+//                "monthNbr": "201703"
+//            }, function (data) {
+//                console.log(data)
+//                newdata = data
+//            });
+//            return newdata
+//        }
+
+
+        var json = get_data();
+
+        $('#main').highcharts({
+            chart: {
+                type: 'column',
+                reflow: true//跟着屏幕自适应
+            },
+            credits: {
+                enabled: false//是否显示版权
+            },
+            exporting: {
+                enabled: false //是否显示导出按钮
+            },
+            title: {
+                text: 'list bar'
+            },
+            subtitle: {
+                text: '账单柱图'
+            },
+            xAxis: {
+                categories: " ",
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '金额 (元)'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} 元</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: json
+        });
+    });
+</script>
+</body>
+</html>
