@@ -50,101 +50,88 @@
 
     $(function () {
 
-        function get_data() {
-            var data;
-            //通过Ajax获取数据
-            $.ajax({
-                type: "post",
-                async: false, //同步执行
-                url: "http://60.221.214.6:80/merfront/keypos/queryStati",
-                contentType: "application/json",
-                dataType: "jsonp", //返回数据形式为json
-                data: {
-                    "mobileNo": "13008020978",
-                    "monthNbr": "201703"
-                },
-                success: function (result) {
-                    console.log(result);
-                    if (result) {
-                        data = result;
-                    }
-                },
-                error: function (errorMsg) {
-                    alert('数据加载失败！');
-                    console.log("数据加载失败！");
-                    return false;
+
+        var mobileNo = GetRequest()['mobileNo'];
+        var monthNbr = GetRequest()['monthNbr'];
+        $.ajax({
+            type: "GET",
+            async: false,
+            url: "http://60.221.214.6/merfront/keypos/queryStati",
+//            http://www.hovace.me/json.json
+//            http://60.221.214.6/merfront/keypos/queryStati
+            data: {
+                "mobileNo": mobileNo,
+                "monthNbr": monthNbr
+            },
+            /*
+
+             */
+            jsonpCallback: "jpCallback",
+            contentType: "application/json",
+            dataType: "JSONP",
+            success: function (result) {
+                console.log(result);
+                if (result) {
+                    $('#main').highcharts({
+                        chart: {
+                            type: 'column',
+                            reflow: true//跟着屏幕自适应
+                        },
+                        credits: {
+                            enabled: false//是否显示版权
+                        },
+                        exporting: {
+                            enabled: false //是否显示导出按钮
+                        },
+                        title: {
+                            text: 'list bar'
+                        },
+                        subtitle: {
+                            text: '账单柱图'
+                        },
+                        xAxis: {
+                            categories: " ",
+                            crosshair: true
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: '金额 (元)'
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:.1f} 元</b></td></tr>',
+                            footerFormat: '</table>',
+                            shared: true,
+                            useHTML: true
+                        },
+                        plotOptions: {
+                            column: {
+                                pointPadding: 0.2,
+                                borderWidth: 0
+                            }
+                        },
+                        series: result
+                    });
+                } else {
+                    alert('数据格式不正确');
                 }
-            });
-            return data;
-        }
-
-        var a = {
-            "success": true,
-            "success": "操作成功",
-            "sign": "014188CB7F4F13320F6E3C00F2CD53B2",
-            "mercInComes": [{"merchantName": "旋转火锅", "merPayAmt": "219359258"}, {
-                "merchantName": "宾馆宾馆宾馆宾馆宾馆宾馆宾馆宾馆宾馆",
-                "merPayAmt": "2"
-            }]
-        }
-//        function get_data() {
-//            var newdata;
-//            $.getJSON("http://60.221.214.6:80/merfront/keypos/queryStati", data = {
-//                "mobileNo": "13008020978",
-//                "monthNbr": "201703"
-//            }, function (data) {
-//                console.log(data)
-//                newdata = data
-//            });
-//            return newdata
-//        }
 
 
-        var json = get_data();
-
-        $('#main').highcharts({
-            chart: {
-                type: 'column',
-                reflow: true//跟着屏幕自适应
             },
-            credits: {
-                enabled: false//是否显示版权
+            jpCallback: function (data) {
+                console.log(data);
             },
-            exporting: {
-                enabled: false //是否显示导出按钮
-            },
-            title: {
-                text: 'list bar'
-            },
-            subtitle: {
-                text: '账单柱图'
-            },
-            xAxis: {
-                categories: " ",
-                crosshair: true
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: '金额 (元)'
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} 元</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: json
+            error: function (errorMsg) {
+                alert('数据加载失败！');
+                console.log("数据加载失败！");
+                return false;
+            }
         });
+
+
     });
 </script>
 </body>
