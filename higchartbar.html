@@ -49,10 +49,23 @@
 
 
     $(function () {
+        var mobileNo, monthNbr;
 
+        if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {  //判断iPhone|iPad|iPod|iOS
 
-        var mobileNo = GetRequest()['mobileNo'];
-        var monthNbr = GetRequest()['monthNbr'];
+            function getVal(mobile, dateTime) {
+                mobileNo = mobile;
+                monthNbr = dateTime;
+            }
+
+        } else if (/(Android)/i.test(navigator.userAgent)) {
+            mobileNo = GetRequest()['mobileNo'];
+            monthNbr = GetRequest()['monthNbr'];
+        } else {
+            mobileNo = GetRequest()['mobileNo'];
+            monthNbr = GetRequest()['monthNbr'];
+        }
+        ;
         $.ajax({
             type: "GET",
             async: false,
